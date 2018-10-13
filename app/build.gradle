@@ -25,11 +25,15 @@ android {
     productFlavors {
         LIVE {
             dimension "default"
+            applicationIdSuffix ""
+            resValue "string", "app_name", "kotlinbase"
             buildConfigField("String", "BASE_SERVER", String.format("\"%s\"", BASE_SERVER_LIVE))
         }
 
-        WNP_DEV {
+        DEV {
             dimension "default"
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "kotlinbase dev"
             buildConfigField("String", "BASE_SERVER", String.format("\"%s\"", BASE_SERVER_DEV))
         }
     }
@@ -44,4 +48,5 @@ dependencies {
     androidTestImplementation(testDependencies.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    implementation appDependencies.multiDex
 }

@@ -27,7 +27,6 @@ task clean(type: Delete) {
 }
 
 ext {
-
     applicationId = 'com.imaginato.app.kotlinbase'
     compileSdkVersion = 26
     buildToolsVersion = '27.0.3'
