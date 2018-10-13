@@ -21,6 +21,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "default"
+    productFlavors {
+        LIVE {
+            dimension "default"
+            buildConfigField("String", "BASE_SERVER", String.format("\"%s\"", BASE_SERVER_LIVE))
+        }
+
+        WNP_DEV {
+            dimension "default"
+            buildConfigField("String", "BASE_SERVER", String.format("\"%s\"", BASE_SERVER_DEV))
+        }
+    }
 }
 
 dependencies {
