@@ -1,4 +1,4 @@
-package com.imaginato.app.kotlinbase.base
+package com.imaginato.app.kotlinbase.ui.base
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

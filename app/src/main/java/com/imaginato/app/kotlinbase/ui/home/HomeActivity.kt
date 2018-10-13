@@ -1,10 +1,12 @@
-package com.imaginato.app.kotlinbase
+package com.imaginato.app.kotlinbase.ui.home
 
 import android.os.Bundle
-import com.imaginato.app.kotlinbase.base.BaseActivity
+import com.imaginato.app.kotlinbase.BuildConfig
+import com.imaginato.app.kotlinbase.R
+import com.imaginato.app.kotlinbase.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : BaseActivity<HomeContract.Presenter>(),HomeContract.View {
+class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +19,7 @@ class HomeActivity : BaseActivity<HomeContract.Presenter>(),HomeContract.View {
         tvContent.setText(userName)
     }
 
-    override fun getPresenter(): HomeContract.Presenter? {
-        return HomePresenterImpe()
+    override fun initInject() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

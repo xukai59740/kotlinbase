@@ -1,7 +1,7 @@
-package com.imaginato.app.kotlinbase
+package com.imaginato.app.kotlinbase.ui.home
 
-import com.imaginato.app.kotlinbase.base.BasePresenter
-import com.imaginato.app.kotlinbase.base.BaseView
+import com.imaginato.app.kotlinbase.ui.base.BasePresenter
+import com.imaginato.app.kotlinbase.ui.base.BaseView
 
 /**
  * Created by xukai on 2018/10/13.
