@@ -50,4 +50,5 @@ dependencies {
     implementation appDependencies.multiDex
     implementation appDependencies.dagger
     kapt appDependencies.daggerCompiler
+    annotationProcessor appDependencies.daggerCompiler
 }
