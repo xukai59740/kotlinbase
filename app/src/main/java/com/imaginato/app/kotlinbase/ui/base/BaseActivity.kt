@@ -2,13 +2,16 @@ package com.imaginato.app.kotlinbase.ui.base
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import javax.inject.Inject
 
 /**
  * Created by xukai on 2018/10/13.
  */
-open abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
+abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
 
-    protected var mPresenter: T? = null
+
+    @JvmField
+    @Inject var mPresenter: T? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

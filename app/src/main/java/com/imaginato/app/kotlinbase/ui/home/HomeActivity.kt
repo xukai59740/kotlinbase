@@ -3,6 +3,7 @@ package com.imaginato.app.kotlinbase.ui.home
 import android.os.Bundle
 import com.imaginato.app.kotlinbase.BuildConfig
 import com.imaginato.app.kotlinbase.R
+import com.imaginato.app.kotlinbase.injection.component.DaggerPresenterComponent
 import com.imaginato.app.kotlinbase.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -19,7 +20,9 @@ class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
         tvContent.setText(userName)
     }
 
+
+
     override fun initInject() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        DaggerPresenterComponent.create().inject(this)
     }
 }
