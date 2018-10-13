@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 open abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
 
     protected var mPresenter: T? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mPresenter = getPresenter()
