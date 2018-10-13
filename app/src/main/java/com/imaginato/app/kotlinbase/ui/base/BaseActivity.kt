@@ -9,7 +9,7 @@ import javax.inject.Inject
  */
 abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
 
-
+    //must use JvmField, java can access kotlin
     @JvmField
     @Inject var mPresenter: T? = null
 
