@@ -50,5 +50,10 @@ dependencies {
     implementation appDependencies.multiDex
     implementation appDependencies.dagger
     kapt appDependencies.daggerCompiler
-    //annotationProcessor appDependencies.daggerCompiler
+    implementation appDependencies.rxJava
+    implementation appDependencies.rxAndroid
+    implementation appDependencies.retrofit
+    implementation appDependencies.retrofitAdapter
+    implementation appDependencies.retrofitConverter
+    implementation appDependencies.retrofitMoshi
 }
