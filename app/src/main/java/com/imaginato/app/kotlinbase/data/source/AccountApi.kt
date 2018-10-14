@@ -7,7 +7,7 @@ import retrofit2.http.*
 /**
  * Created by xukai on 2018/10/14.
  */
-open interface AccountApi {
+interface AccountApi {
 
     @FormUrlEncoded
     @POST("login")

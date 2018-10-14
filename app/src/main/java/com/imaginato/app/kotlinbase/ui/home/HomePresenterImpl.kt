@@ -3,11 +3,10 @@ package com.imaginato.app.kotlinbase.ui.home
 import com.imaginato.app.kotlinbase.data.RetrofitFactory
 import com.imaginato.app.kotlinbase.data.repository.AccountRepository
 import com.imaginato.app.kotlinbase.data.repository.AccountRepositoryImpl
+import com.imaginato.app.kotlinbase.data.source.AccountLocal
 import com.imaginato.app.kotlinbase.model.response.User
 import com.imaginato.app.kotlinbase.ui.base.RxPresenter
 import io.reactivex.observers.DisposableObserver
-import io.reactivex.schedulers.Schedulers
-import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject
 
 
@@ -16,24 +15,45 @@ import javax.inject.Inject
  */
 class HomePresenterImpl : RxPresenter<HomeContract.View>, HomeContract.Presenter {
 
-    var accountRepository : AccountRepository
+    var accountRepository: AccountRepository
 
-    @Inject constructor(){
-        accountRepository=AccountRepositoryImpl(RetrofitFactory.provideAccountApi())
+    @Inject constructor() {
+        accountRepository = AccountRepositoryImpl(RetrofitFactory.provideAccountApi()
+                , AccountLocal())
     }
 
-    override fun loadUser(){
+    override fun loadUser() {
+        execute(accountRepository.readLogin(),
+                object : DisposableObserver<User?>() {
+                    override fun onNext(user: User?) {
+                        if (user != null) {
+                            mView?.showUserName(user.firstName + user.lastName)
+                        } else {
+                            login()
+                        }
+                    }
+
+                    override fun onError(e: Throwable?) {
+                        login()
+                    }
+
+                    override fun onComplete() {
+
+                    }
+                })
+    }
+
+    fun login() {
         var params = hashMapOf<String, String>()
         params.put("email", "test@test.com")
-
         execute(accountRepository.login(params),
                 object : DisposableObserver<User>() {
                     override fun onNext(user: User) {
-                        mView?.showUserName("kevinxu")
+                        mView?.showUserName(user.firstName + user.lastName)
                     }
 
                     override fun onError(t: Throwable) {
-                        mView?.showUserName(t.message+"")
+                        mView?.showUserName(t.message + "")
                     }
 
                     override fun onComplete() {
