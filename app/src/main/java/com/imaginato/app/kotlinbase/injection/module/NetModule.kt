@@ -6,9 +6,6 @@ import com.imaginato.app.kotlinbase.data.repository.AccountRepository
 import com.imaginato.app.kotlinbase.data.repository.AccountRepositoryImpl
 import com.imaginato.app.kotlinbase.data.source.AccountApi
 import com.imaginato.app.kotlinbase.data.source.AccountLocal
-import com.imaginato.app.kotlinbase.injection.ActivityScope
-import com.imaginato.app.kotlinbase.ui.home.HomeContract
-import com.imaginato.app.kotlinbase.ui.home.HomePresenterImpl
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

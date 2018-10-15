@@ -5,6 +5,7 @@ import com.imaginato.app.kotlinbase.BuildConfig
 import com.imaginato.app.kotlinbase.R
 import com.imaginato.app.kotlinbase.injection.component.DaggerPresenterComponent
 import com.imaginato.app.kotlinbase.ui.base.BaseActivity
+import com.imaginato.app.kotlinbase.ui.home.presenter.HomeContract
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {

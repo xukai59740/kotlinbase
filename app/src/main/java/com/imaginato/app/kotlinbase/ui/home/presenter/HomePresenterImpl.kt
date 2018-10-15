@@ -1,4 +1,4 @@
-package com.imaginato.app.kotlinbase.ui.home
+package com.imaginato.app.kotlinbase.ui.home.presenter
 
 import com.imaginato.app.kotlinbase.data.repository.AccountRepository
 import com.imaginato.app.kotlinbase.model.response.User
