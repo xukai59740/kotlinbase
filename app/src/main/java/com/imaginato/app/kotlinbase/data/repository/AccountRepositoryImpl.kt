@@ -20,7 +20,6 @@ class AccountRepositoryImpl : AccountRepository {
     @Inject constructor(accountApi: AccountApi, accountLocal: AccountLocal) {
         this@AccountRepositoryImpl.accountApi = accountApi
         this@AccountRepositoryImpl.accountLocal = accountLocal
-        Log.d("kevin","create AccountRepositoryImpl")
     }
 
     override fun login(params: Map<String, String>): Observable<User> {

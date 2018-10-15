@@ -12,10 +12,6 @@ import io.realm.Realm
  */
 class AccountLocal {
 
-    constructor(){
-        Log.d("kevin","create AccountLocal")
-    }
-
     fun writeUser(user: User): Observable<Boolean> {
         val realm = Realm.getDefaultInstance()
         realm.executeTransaction { realmTransaction ->
