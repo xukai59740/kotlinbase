@@ -1,9 +1,6 @@
 package com.imaginato.app.kotlinbase.ui.home
 
-import com.imaginato.app.kotlinbase.data.RetrofitFactory
 import com.imaginato.app.kotlinbase.data.repository.AccountRepository
-import com.imaginato.app.kotlinbase.data.repository.AccountRepositoryImpl
-import com.imaginato.app.kotlinbase.data.source.AccountLocal
 import com.imaginato.app.kotlinbase.model.response.User
 import com.imaginato.app.kotlinbase.ui.base.RxPresenter
 import io.reactivex.observers.DisposableObserver
@@ -17,9 +14,8 @@ class HomePresenterImpl : RxPresenter<HomeContract.View>, HomeContract.Presenter
 
     var accountRepository: AccountRepository
 
-    @Inject constructor() {
-        accountRepository = AccountRepositoryImpl(RetrofitFactory.provideAccountApi()
-                , AccountLocal())
+    @Inject constructor(accountRepository: AccountRepository) {
+        this@HomePresenterImpl.accountRepository = accountRepository
     }
 
     override fun loadUser() {

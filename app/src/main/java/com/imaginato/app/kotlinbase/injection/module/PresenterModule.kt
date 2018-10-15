@@ -1,5 +1,6 @@
 package com.imaginato.app.kotlinbase.injection.module
 
+import com.imaginato.app.kotlinbase.data.repository.AccountRepository
 import com.imaginato.app.kotlinbase.injection.ActivityScope
 import com.imaginato.app.kotlinbase.ui.home.HomeContract
 import com.imaginato.app.kotlinbase.ui.home.HomePresenterImpl
@@ -14,8 +15,8 @@ class PresenterModule {
 
     @Provides
     @ActivityScope
-    fun provideHomePresenterImpl():HomeContract.Presenter{
-        return HomePresenterImpl()
+    fun provideHomePresenterImpl(accountRepository: AccountRepository): HomeContract.Presenter {
+        return HomePresenterImpl(accountRepository)
     }
 
 }

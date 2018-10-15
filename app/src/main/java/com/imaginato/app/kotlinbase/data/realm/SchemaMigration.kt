@@ -6,7 +6,7 @@ import io.realm.RealmMigration
 /**
  * Created by xukai on 2018/10/14.
  */
-class SchemaMigration :RealmMigration {
+class SchemaMigration : RealmMigration {
     companion object {
         val SCHEMA_VERSION: Long = 1
     }

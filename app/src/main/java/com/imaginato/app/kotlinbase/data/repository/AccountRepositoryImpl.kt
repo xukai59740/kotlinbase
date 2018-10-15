@@ -11,7 +11,9 @@ import io.reactivex.Observable
 class AccountRepositoryImpl : AccountRepository {
 
     val accountApi: AccountApi
+
     val accountLocal: AccountLocal
+
 
     constructor(accountApi: AccountApi, accountLocal: AccountLocal) {
         this@AccountRepositoryImpl.accountApi = accountApi
@@ -27,10 +29,10 @@ class AccountRepositoryImpl : AccountRepository {
 //                        Observable.error<User>(Throwable(user.error))
 //                    }
 //                }
-        var user=User()
-        user.firstName="kevin"
-        user.lastName="xu"
-        user.id="123123112"
+        var user = User()
+        user.firstName = "kevin"
+        user.lastName = "xu"
+        user.id = "123123112"
         saveLogin(user)
         return Observable.just(user)
     }

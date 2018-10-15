@@ -17,7 +17,7 @@ open class RxPresenter<T : BaseView> : BasePresenter {
 
     @Suppress("UNCHECKED_CAST")
     override fun attachView(view: BaseView) {
-       mView = view as T
+        mView = view as T
     }
 
     override fun detachView() {

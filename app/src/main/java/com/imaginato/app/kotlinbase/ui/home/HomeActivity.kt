@@ -21,7 +21,6 @@ class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
     }
 
 
-
     override fun initInject() {
         DaggerPresenterComponent.create().inject(this)
     }

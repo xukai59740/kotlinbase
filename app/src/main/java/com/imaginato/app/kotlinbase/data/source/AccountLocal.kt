@@ -24,9 +24,9 @@ class AccountLocal {
 
     fun readUser(): Observable<User?> {
         val realm = Realm.getDefaultInstance()
-        var userRealm =realm.where(UserRealm::class.java).findFirst()
+        var userRealm = realm.where(UserRealm::class.java).findFirst()
         if (userRealm != null) {
-            var user=UserMapper.convertUserRealmToUser(userRealm)
+            var user = UserMapper.convertUserRealmToUser(userRealm)
             realm.close()
             return Observable.just(user)
         } else {

@@ -23,6 +23,7 @@ class BaseApplication : Application() {
                 .build()
         Realm.setDefaultConfiguration(realmConfiguration)
     }
+
     private fun initializeComponents() {
 
     }

@@ -9,18 +9,19 @@ import com.imaginato.app.kotlinbase.model.response.User
 class UserMapper {
     companion object {
 
-        fun convertUserToUserRealm(user: User):UserRealm{
-            var userRealm=UserRealm()
-            userRealm.userId=user.id
-            userRealm.firstName=user.firstName
-            userRealm.lastName=user.lastName
+        fun convertUserToUserRealm(user: User): UserRealm {
+            var userRealm = UserRealm()
+            userRealm.userId = user.id
+            userRealm.firstName = user.firstName
+            userRealm.lastName = user.lastName
             return userRealm
         }
-        fun convertUserRealmToUser(userRealm: UserRealm):User{
-            var user=User()
-            user.id=userRealm.userId
-            user.firstName=userRealm.firstName
-            user.lastName=userRealm.lastName
+
+        fun convertUserRealmToUser(userRealm: UserRealm): User {
+            var user = User()
+            user.id = userRealm.userId
+            user.firstName = userRealm.firstName
+            user.lastName = userRealm.lastName
             return user
         }
     }

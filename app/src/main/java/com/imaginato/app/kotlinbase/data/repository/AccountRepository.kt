@@ -10,7 +10,7 @@ interface AccountRepository {
 
     fun login(params: Map<String, String>): Observable<User>
 
-    fun saveLogin(user:User): Observable<Boolean>
+    fun saveLogin(user: User): Observable<Boolean>
 
 
     fun readLogin(): Observable<User?>

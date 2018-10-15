@@ -11,7 +11,7 @@ open class UserRealm : RealmObject {
     @PrimaryKey
     var id = "1"
 
-    lateinit var userId :String
+    lateinit var userId: String
 
     var firstName: String? = null
 
