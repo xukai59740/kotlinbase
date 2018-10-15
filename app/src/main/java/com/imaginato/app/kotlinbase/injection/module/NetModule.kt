@@ -13,6 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
+import javax.inject.Singleton
 
 /**
  * Created by xukai on 2018/10/13.
@@ -21,6 +22,7 @@ import javax.inject.Named
 class NetModule {
 
     @Provides
+    @Singleton
     @Named("DefaultRetrofit")
     fun provideDefaultRetrofit(@Named("DefaultOkHttpClient") okHttpClient: OkHttpClient): Retrofit {
         val retrofit = Retrofit.Builder()
@@ -33,6 +35,7 @@ class NetModule {
     }
 
     @Provides
+    @Singleton
     @Named("DefaultOkHttpClient")
     fun provideHttpClient(): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
@@ -41,20 +44,21 @@ class NetModule {
 
     // Account
     @Provides
+    @Singleton
     fun provideAccountApi(@Named("DefaultRetrofit") retrofit: Retrofit): AccountApi {
         return retrofit.create(AccountApi::class.java)
     }
 
     @Provides
+    @Singleton
     fun provideAccountLocal(): AccountLocal {
         return AccountLocal()
     }
 
     @Provides
+    @Singleton
     fun provideAccountRepository(accountApi: AccountApi, accountLocal: AccountLocal): AccountRepository {
         return AccountRepositoryImpl(accountApi, accountLocal)
     }
-
-
 
 }
