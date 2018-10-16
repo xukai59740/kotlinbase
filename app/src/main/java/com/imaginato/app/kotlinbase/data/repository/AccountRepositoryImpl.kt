@@ -1,6 +1,5 @@
 package com.imaginato.app.kotlinbase.data.repository
 
-import android.util.Log
 import com.imaginato.app.kotlinbase.data.source.AccountApi
 import com.imaginato.app.kotlinbase.data.source.AccountLocal
 import com.imaginato.app.kotlinbase.model.response.User

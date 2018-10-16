@@ -3,6 +3,7 @@ package com.imaginato.app.kotlinbase.injection.component
 import com.imaginato.app.kotlinbase.injection.ActivityScope
 import com.imaginato.app.kotlinbase.injection.module.PresenterModule
 import com.imaginato.app.kotlinbase.ui.home.HomeActivity
+import com.imaginato.app.kotlinbase.ui.login.LoginActivity
 import dagger.Component
 
 /**
@@ -12,5 +13,6 @@ import dagger.Component
 @ActivityScope
 @Component(modules = arrayOf(PresenterModule::class), dependencies = arrayOf(SingletonComponent::class))
 interface PresenterComponent {
-    fun inject(homeActivity: HomeActivity)
+    fun inject(activity: HomeActivity)
+    fun inject(activity: LoginActivity)
 }
