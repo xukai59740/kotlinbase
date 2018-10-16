@@ -2,6 +2,7 @@ package com.imaginato.app.kotlinbase.data.repository
 
 import com.imaginato.app.kotlinbase.data.source.AccountApi
 import com.imaginato.app.kotlinbase.data.source.AccountLocal
+import com.imaginato.app.kotlinbase.data.source.CommonMock
 import com.imaginato.app.kotlinbase.model.response.User
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -15,10 +16,12 @@ class AccountRepositoryImpl : AccountRepository {
 
     val accountLocal: AccountLocal
 
+    val commonMock: CommonMock
 
-    @Inject constructor(accountApi: AccountApi, accountLocal: AccountLocal) {
+    @Inject constructor(accountApi: AccountApi, accountLocal: AccountLocal, commonMock: CommonMock) {
         this@AccountRepositoryImpl.accountApi = accountApi
         this@AccountRepositoryImpl.accountLocal = accountLocal
+        this@AccountRepositoryImpl.commonMock = commonMock
     }
 
     override fun login(params: Map<String, String>): Observable<User> {
@@ -30,12 +33,11 @@ class AccountRepositoryImpl : AccountRepository {
 //                        Observable.error<User>(Throwable(user.error))
 //                    }
 //                }
-        var user = User()
-        user.firstName = "kevin"
-        user.lastName = "xu"
-        user.id = "123123112"
-        saveLogin(user)
-        return Observable.just(user)
+        return commonMock.mockLoginSuccess()
+                .concatMap { user ->
+                    saveLogin(user)
+                    Observable.just(user)
+                }
     }
 
     override fun saveLogin(user: User): Observable<Boolean> {

@@ -6,6 +6,7 @@ import com.imaginato.app.kotlinbase.data.repository.AccountRepository
 import com.imaginato.app.kotlinbase.data.repository.AccountRepositoryImpl
 import com.imaginato.app.kotlinbase.data.source.AccountApi
 import com.imaginato.app.kotlinbase.data.source.AccountLocal
+import com.imaginato.app.kotlinbase.data.source.CommonMock
 import com.imaginato.app.kotlinbase.ui.base.BaseApplication
 import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
@@ -60,8 +61,14 @@ class NetModule {
 
     @Provides
     @Singleton
-    fun provideAccountRepository(accountApi: AccountApi, accountLocal: AccountLocal): AccountRepository {
-        return AccountRepositoryImpl(accountApi, accountLocal)
+    fun provideCommonMock(): CommonMock {
+        return CommonMock()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAccountRepository(accountApi: AccountApi, accountLocal: AccountLocal, commonMock: CommonMock): AccountRepository {
+        return AccountRepositoryImpl(accountApi, accountLocal, commonMock)
     }
 
 }

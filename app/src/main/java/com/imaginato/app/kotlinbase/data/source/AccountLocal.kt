@@ -1,6 +1,5 @@
 package com.imaginato.app.kotlinbase.data.source
 
-import android.util.Log
 import com.imaginato.app.kotlinbase.model.mapper.UserMapper
 import com.imaginato.app.kotlinbase.model.realm.UserRealm
 import com.imaginato.app.kotlinbase.model.response.User
