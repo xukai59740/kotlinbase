@@ -8,7 +8,7 @@ import io.reactivex.Observable
  */
 class CommonMock{
 
-    fun mockLoginSuccess(): Observable<User> {
+    fun mockLoginSuccess(): Observable<User?> {
         var user = User()
         user.firstName = "test firstName"
         user.lastName = "test lastName"

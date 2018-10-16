@@ -1,8 +1,9 @@
 package com.imaginato.app.kotlinbase.ui.home.presenter
 
-import com.imaginato.app.kotlinbase.data.repository.AccountRepository
 import com.imaginato.app.kotlinbase.model.response.User
 import com.imaginato.app.kotlinbase.ui.base.RxPresenter
+import com.imaginato.app.kotlinbase.usecase.LoginUseCase
+import com.imaginato.app.kotlinbase.usecase.ReadLoginUseCase
 import io.reactivex.observers.DisposableObserver
 import javax.inject.Inject
 
@@ -12,51 +13,55 @@ import javax.inject.Inject
  */
 class HomePresenterImpl : RxPresenter<HomeContract.View>, HomeContract.Presenter {
 
-    var accountRepository: AccountRepository
+    var loginUseCase: LoginUseCase
+    var readLoginUseCase: ReadLoginUseCase
 
-    @Inject constructor(accountRepository: AccountRepository) {
-        this@HomePresenterImpl.accountRepository = accountRepository
+    @Inject constructor(loginUseCase: LoginUseCase, readLoginUseCase: ReadLoginUseCase) {
+        this@HomePresenterImpl.loginUseCase = loginUseCase
+        this@HomePresenterImpl.readLoginUseCase = readLoginUseCase
+    }
+
+    override fun detachView() {
+        loginUseCase.unsubscribe()
+        readLoginUseCase.unsubscribe()
+        super.detachView()
     }
 
     override fun loadUser() {
-        execute(accountRepository.readLogin(),
-                object : DisposableObserver<User?>() {
-                    override fun onNext(user: User?) {
-                        if (user != null) {
-                            mView?.showUserName(user.firstName + user.lastName)
-                        } else {
-                            login()
-                        }
-                    }
+        readLoginUseCase.execute(object : DisposableObserver<User?>() {
+            override fun onNext(user: User?) {
+                if (user != null) {
+                    mView?.showUserName(user.firstName + user.lastName)
+                } else {
+                    login()
+                }
+            }
 
-                    override fun onError(e: Throwable?) {
-                        login()
-                    }
+            override fun onError(e: Throwable?) {
+                login()
+            }
 
-                    override fun onComplete() {
+            override fun onComplete() {
 
-                    }
-                })
+            }
+        })
     }
 
     fun login() {
-        var params = hashMapOf<String, String>()
-        params.put("email", "test@test.com")
-        execute(accountRepository.login(params),
-                object : DisposableObserver<User>() {
-                    override fun onNext(user: User) {
-                        mView?.showUserName(user.firstName + user.lastName)
-                    }
+        loginUseCase.setParams("test@test.com")
+        loginUseCase.execute(object : DisposableObserver<User?>() {
+            override fun onNext(user: User?) {
+                mView?.showUserName(user?.firstName + user?.lastName)
+            }
 
-                    override fun onError(t: Throwable) {
-                        mView?.showUserName(t.message + "")
-                    }
+            override fun onError(t: Throwable?) {
+                mView?.showUserName(t?.message + "")
+            }
 
-                    override fun onComplete() {
+            override fun onComplete() {
 
-                    }
-                }
-        )
+            }
+        })
     }
 
 }

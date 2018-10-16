@@ -24,7 +24,7 @@ class AccountRepositoryImpl : AccountRepository {
         this@AccountRepositoryImpl.commonMock = commonMock
     }
 
-    override fun login(params: Map<String, String>): Observable<User> {
+    override fun login(params: Map<String, String>): Observable<User?> {
 //        return accountApi.login(params)
 //                .concatMap { user ->
 //                    if (user.code == 1) {
@@ -35,8 +35,12 @@ class AccountRepositoryImpl : AccountRepository {
 //                }
         return commonMock.mockLoginSuccess()
                 .concatMap { user ->
-                    saveLogin(user)
-                    Observable.just(user)
+                    if (user != null) {
+                        saveLogin(user)
+                        Observable.just(user)
+                    } else {
+                        Observable.error(Throwable(""))
+                    }
                 }
     }
 

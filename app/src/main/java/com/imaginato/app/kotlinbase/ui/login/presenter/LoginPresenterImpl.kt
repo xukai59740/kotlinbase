@@ -1,6 +1,5 @@
 package com.imaginato.app.kotlinbase.ui.home.presenter
 
-import com.imaginato.app.kotlinbase.data.repository.AccountRepository
 import com.imaginato.app.kotlinbase.ui.base.RxPresenter
 import javax.inject.Inject
 
@@ -9,10 +8,8 @@ import javax.inject.Inject
  */
 class LoginPresenterImpl : RxPresenter<LoginContract.View>, LoginContract.Presenter {
 
-    var accountRepository: AccountRepository
+    @Inject constructor() {
 
-    @Inject constructor(accountRepository: AccountRepository) {
-        this@LoginPresenterImpl.accountRepository = accountRepository
     }
 
 }

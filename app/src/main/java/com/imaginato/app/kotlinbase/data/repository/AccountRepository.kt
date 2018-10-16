@@ -8,7 +8,7 @@ import io.reactivex.Observable
  */
 interface AccountRepository {
 
-    fun login(params: Map<String, String>): Observable<User>
+    fun login(params: Map<String, String>): Observable<User?>
 
     fun saveLogin(user: User): Observable<Boolean>
 

@@ -13,6 +13,6 @@ interface AccountApi {
 
     @FormUrlEncoded
     @POST("login")
-    fun login(@FieldMap params: Map<String, String>): Observable<User>
+    fun login(@FieldMap params: Map<String, String>): Observable<User?>
 
 }
