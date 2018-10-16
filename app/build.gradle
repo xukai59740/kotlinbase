@@ -56,4 +56,8 @@ dependencies {
     implementation appDependencies.retrofitAdapter
     implementation appDependencies.retrofitConverter
     implementation appDependencies.retrofitMoshi
+    debugImplementation developmentDependencies.leakCanaryDebug
+    releaseImplementation developmentDependencies.leakCanaryRelease
+    debugImplementation developmentDependencies.chuck
+    releaseImplementation developmentDependencies.releaseChuck
 }

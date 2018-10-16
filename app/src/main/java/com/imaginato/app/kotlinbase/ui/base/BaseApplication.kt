@@ -3,6 +3,7 @@ package com.imaginato.app.kotlinbase.ui.base
 import android.app.Application
 import com.imaginato.app.kotlinbase.data.realm.SchemaMigration
 import com.imaginato.app.kotlinbase.injection.component.SingletonComponent
+import com.squareup.leakcanary.LeakCanary
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
@@ -11,10 +12,15 @@ import io.realm.RealmConfiguration
  */
 class BaseApplication : Application() {
     companion object {
+
+        lateinit var instance: BaseApplication
+
         lateinit var singletonComponent: SingletonComponent
+
         init {
             initializeComponents()
         }
+
         private fun initializeComponents() {
             singletonComponent = SingletonComponent
                     .Initializer.init()
@@ -23,8 +29,17 @@ class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        instance = this@BaseApplication
         initRealm()
+        initLeakCanary()
         initializeComponents()
+    }
+
+    private fun initLeakCanary(){
+        if (LeakCanary.isInAnalyzerProcess(this@BaseApplication)) {
+            return
+        }
+        LeakCanary.install(this@BaseApplication)
     }
 
     private fun initRealm() {

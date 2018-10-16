@@ -6,6 +6,8 @@ import com.imaginato.app.kotlinbase.data.repository.AccountRepository
 import com.imaginato.app.kotlinbase.data.repository.AccountRepositoryImpl
 import com.imaginato.app.kotlinbase.data.source.AccountApi
 import com.imaginato.app.kotlinbase.data.source.AccountLocal
+import com.imaginato.app.kotlinbase.ui.base.BaseApplication
+import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -39,6 +41,7 @@ class NetModule {
     @Named("DefaultOkHttpClient")
     fun provideHttpClient(): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
+        httpClient.addInterceptor(ChuckInterceptor(BaseApplication.instance))
         return httpClient.build()
     }
 
