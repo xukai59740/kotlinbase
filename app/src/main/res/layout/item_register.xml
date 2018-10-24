@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="planName" type="String"/>
+        <variable name="planImage" type="Integer"/>
         <variable name="clickListener" type="android.view.View.OnClickListener"/>
     </data>
     <LinearLayout
@@ -16,5 +18,11 @@
             android:layout_height="wrap_content"
             android:onClick="@{clickListener}"
             android:text="@{planName}"/>
+        <ImageView
+            android:id="@+id/iv_plan_pic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:image="@{planImage}"
+        />
     </LinearLayout>
 </layout>
