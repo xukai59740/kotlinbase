@@ -36,6 +36,9 @@ android {
             buildConfigField("String", "BASE_SERVER", String.format("\"%s\"", BASE_SERVER_DEV))
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -44,6 +47,7 @@ dependencies {
     implementation appDependencies.androidSupportConstraint
     implementation appDependencies.kotlinStdlib
     testImplementation testDependencies.junit
+    kapt 'com.android.databinding:compiler:3.0.0'
     androidTestImplementation(testDependencies.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -60,4 +64,7 @@ dependencies {
     releaseImplementation developmentDependencies.leakCanaryRelease
     debugImplementation developmentDependencies.chuck
     releaseImplementation developmentDependencies.releaseChuck
+}
+kapt {
+    generateStubs = true
 }
