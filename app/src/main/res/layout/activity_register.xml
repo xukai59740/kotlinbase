@@ -3,12 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="java.util.List"/>
-        <variable
-            name="plans"
-            type="List&lt;String>"/>
-        <variable
-            name="user"
-            type="com.imaginato.app.kotlinbase.model.response.User"/>
+        <variable name="plans" type="List&lt;String>"/>
+        <variable  name="user" type="com.imaginato.app.kotlinbase.model.response.User"/>
+        <variable name="clickListener" type="android.view.View.OnClickListener"/>
     </data>
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
@@ -21,6 +18,7 @@
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{clickListener}"
             android:text="@{user.firstName}"/>
 
         <TextView
