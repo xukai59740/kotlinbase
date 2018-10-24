@@ -25,6 +25,9 @@ class RegisterActivity : AppCompatActivity() {
         plans.add("6Meal")
         plans.add("12Meal")
         plans.add("20Meal")
+        plans.add("30Meal")
+        plans.add("40Meal")
+        plans.add("50Meal")
         binding.plans=plans
 
         binding.clickListener=object:View.OnClickListener{
