@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <import type="java.util.List"/>
         <variable name="registerViewModel" type="com.imaginato.app.kotlinbase.ui.register.viewmodel.RegisterViewModel"/>
@@ -17,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{registerViewModel.clickListener}"
-            android:text="@{registerViewModel.user.firstName}"/>
+            android:text="@{registerViewModel.firstName}"/>
 
         <TextView
             android:id="@+id/tv_plan"

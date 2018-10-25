@@ -23,37 +23,32 @@ class RegisterActivity : LifecycleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding:ActivityRegisterBinding=DataBindingUtil.setContentView(this,R.layout.activity_register)
-
         var registerViewModel=RegisterViewModel()
-
         lifecycleRegistry=LifecycleRegistry(this)
         lifecycleRegistry.addObserver(registerViewModel)
-
-        var user =User()
-        user.firstName="kevinxu"
-        registerViewModel.user=user
-
-        var plans= arrayListOf<String>()
-        plans.add("6Meal")
-        plans.add("12Meal")
-        plans.add("20Meal")
-        plans.add("30Meal")
-        plans.add("40Meal")
-        plans.add("50Meal")
-        registerViewModel.plans=plans
+        binding.registerViewModel=registerViewModel
 
         registerViewModel.clickListener=object:View.OnClickListener{
             override fun onClick(v: View?) {
+
+                binding.registerViewModel?.let {
+                    it.firstName.set("kevin.xu1")
+                    it.plans.set(0,"60Meal")
+                }
                 Toast.makeText(this@RegisterActivity,tv_register.text.toString(),Toast.LENGTH_LONG).show()
             }
         }
 
-        binding.registerViewModel=registerViewModel
-
         recy_plans.layoutManager=LinearLayoutManager(this)
         adapter= RegisterAdapter(this)
         recy_plans.adapter=adapter
-        adapter.setData(plans)
+        binding.registerViewModel?.let{
+            adapter.setData(it.plans)
+        }
+
+        binding.registerViewModel?.run {
+            loadData()
+        }
     }
 
     override fun getLifecycle(): Lifecycle {

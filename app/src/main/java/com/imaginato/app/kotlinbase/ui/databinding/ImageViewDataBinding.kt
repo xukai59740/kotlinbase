@@ -1,4 +1,4 @@
-package com.imaginato.app.kotlinbase.ui.viewmodel
+package com.imaginato.app.kotlinbase.ui.databinding
 
 import android.databinding.BindingAdapter
 import android.view.View
@@ -14,7 +14,7 @@ fun loadImage(imageView: ImageView, resId:Int){
     imageView.setImageResource(resId)
 }
 
-@BindingAdapter("visibleOrGone")
+@BindingAdapter("visible_gone")
 fun View.setVisibleOrGone(show: Boolean) {
     visibility = if (show) VISIBLE else GONE
 }

@@ -24,7 +24,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:image="@{safeUnbox(planImage)}"
-            app:visibleOrGone="@{safeUnbox(visable)}"
+            app:visible_gone="@{safeUnbox(visable)}"
         />
     </LinearLayout>
 </layout>

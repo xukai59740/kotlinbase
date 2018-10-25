@@ -26,9 +26,7 @@ class RegisterAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     fun setData(plans: MutableList<String>) {
-        this@RegisterAdapter.plans.clear()
-        this@RegisterAdapter.plans.addAll(plans)
-        notifyDataSetChanged()
+        this@RegisterAdapter.plans = plans
     }
 
     override fun getItemCount(): Int {
@@ -44,7 +42,7 @@ class RegisterAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             visable = true
             clickListener = object : View.OnClickListener {
                 override fun onClick(v: View?) {
-                    this@RegisterAdapter.notifyDataSetChanged()
+
                 }
             }
             executePendingBindings()
