@@ -1,5 +1,8 @@
 package com.imaginato.app.kotlinbase.ui.register
 
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleRegistry
+import android.arch.lifecycle.LifecycleService
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,16 +12,22 @@ import android.widget.Toast
 import com.imaginato.app.kotlinbase.R
 import com.imaginato.app.kotlinbase.databinding.ActivityRegisterBinding
 import com.imaginato.app.kotlinbase.model.response.User
+import com.imaginato.app.kotlinbase.ui.base.LifecycleActivity
 import com.imaginato.app.kotlinbase.ui.register.viewmodel.RegisterViewModel
 import kotlinx.android.synthetic.main.activity_register.*
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : LifecycleActivity() {
 
     lateinit var adapter: RegisterAdapter
+    lateinit var lifecycleRegistry: LifecycleRegistry
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding:ActivityRegisterBinding=DataBindingUtil.setContentView(this,R.layout.activity_register)
+
         var registerViewModel=RegisterViewModel()
+
+        lifecycleRegistry=LifecycleRegistry(this)
+        lifecycleRegistry.addObserver(registerViewModel)
 
         var user =User()
         user.firstName="kevinxu"
@@ -45,6 +54,10 @@ class RegisterActivity : AppCompatActivity() {
         adapter= RegisterAdapter(this)
         recy_plans.adapter=adapter
         adapter.setData(plans)
+    }
+
+    override fun getLifecycle(): Lifecycle {
+        return lifecycleRegistry
     }
 
     interface PlanClickListener{
