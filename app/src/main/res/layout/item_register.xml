@@ -23,8 +23,8 @@
             android:id="@+id/iv_plan_pic"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:image="@{planImage}"
-            app:visibleOrGone="@{visable}"
+            app:image="@{safeUnbox(planImage)}"
+            app:visibleOrGone="@{safeUnbox(visable)}"
         />
     </LinearLayout>
 </layout>
