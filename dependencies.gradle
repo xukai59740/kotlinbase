@@ -22,18 +22,19 @@ ext {
     junitVersion = '4.12'
     espressoVersion = '3.0.2'
     appDependencies = [
-            androidSupportAppcompatV7: "com.android.support:appcompat-v7:${androidSupportVersion}",
-            androidSupportConstraint : "com.android.support.constraint:constraint-layout:${constraintVersion}",
-            multiDex                 : "com.android.support:multidex:${multidexVersion}",
-            kotlinStdlib             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
-            dagger                   : "com.google.dagger:dagger:${daggerVersion}",
-            daggerCompiler           : "com.google.dagger:dagger-compiler:${daggerVersion}",
-            retrofit                 : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            retrofitAdapter          : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
-            retrofitConverter        : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-            retrofitMoshi            : "com.squareup.retrofit2:converter-moshi:${retrofitVersion}",
-            rxJava                   : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-            rxAndroid                : "io.reactivex.rxjava2:rxandroid:${rxJavaVersion}"
+            androidSupportAppcompatV7   : "com.android.support:appcompat-v7:${androidSupportVersion}",
+            androidSupportRecyclerview  : "com.android.support:recyclerview-v7:${androidSupportVersion}",
+            androidSupportConstraint    : "com.android.support.constraint:constraint-layout:${constraintVersion}",
+            multiDex                    : "com.android.support:multidex:${multidexVersion}",
+            kotlinStdlib                : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
+            dagger                      : "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler              : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            retrofit                    : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitAdapter             : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+            retrofitConverter           : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitMoshi               : "com.squareup.retrofit2:converter-moshi:${retrofitVersion}",
+            rxJava                      : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid                   : "io.reactivex.rxjava2:rxandroid:${rxJavaVersion}"
     ]
 
     testDependencies = [

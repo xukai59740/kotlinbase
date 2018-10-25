@@ -25,6 +25,7 @@ open class RegisterViewModel : LifecycleObserver {
         plans.add("30Meal")
         plans.add("40Meal")
         plans.add("50Meal")
+
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
