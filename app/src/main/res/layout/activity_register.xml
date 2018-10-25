@@ -3,9 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="java.util.List"/>
-        <variable name="plans" type="List&lt;String>"/>
-        <variable  name="user" type="com.imaginato.app.kotlinbase.model.response.User"/>
-        <variable name="clickListener" type="android.view.View.OnClickListener"/>
+        <variable name="registerViewModel" type="com.imaginato.app.kotlinbase.ui.register.viewmodel.RegisterViewModel"/>
     </data>
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
@@ -18,14 +16,14 @@
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{clickListener}"
-            android:text="@{user.firstName}"/>
+            android:onClick="@{registerViewModel.clickListener}"
+            android:text="@{registerViewModel.user.firstName}"/>
 
         <TextView
             android:id="@+id/tv_plan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{plans.get(0)}"/>
+            android:text="@{registerViewModel.plans.get(0)}"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recy_plans"

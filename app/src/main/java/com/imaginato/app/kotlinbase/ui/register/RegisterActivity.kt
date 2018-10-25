@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.imaginato.app.kotlinbase.R
 import com.imaginato.app.kotlinbase.databinding.ActivityRegisterBinding
 import com.imaginato.app.kotlinbase.model.response.User
+import com.imaginato.app.kotlinbase.ui.register.viewmodel.RegisterViewModel
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -17,9 +18,11 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding:ActivityRegisterBinding=DataBindingUtil.setContentView(this,R.layout.activity_register)
+        var registerViewModel=RegisterViewModel()
+
         var user =User()
         user.firstName="kevinxu"
-        binding.user=user
+        registerViewModel.user=user
 
         var plans= arrayListOf<String>()
         plans.add("6Meal")
@@ -28,13 +31,15 @@ class RegisterActivity : AppCompatActivity() {
         plans.add("30Meal")
         plans.add("40Meal")
         plans.add("50Meal")
-        binding.plans=plans
+        registerViewModel.plans=plans
 
-        binding.clickListener=object:View.OnClickListener{
+        registerViewModel.clickListener=object:View.OnClickListener{
             override fun onClick(v: View?) {
                 Toast.makeText(this@RegisterActivity,tv_register.text.toString(),Toast.LENGTH_LONG).show()
             }
         }
+
+        binding.registerViewModel=registerViewModel
 
         recy_plans.layoutManager=LinearLayoutManager(this)
         adapter= RegisterAdapter(this)
