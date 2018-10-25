@@ -5,6 +5,7 @@
     <data>
         <variable name="planName" type="String"/>
         <variable name="planImage" type="Integer"/>
+        <variable name="visable" type="Boolean"/>
         <variable name="clickListener" type="android.view.View.OnClickListener"/>
     </data>
     <LinearLayout
@@ -23,6 +24,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:image="@{planImage}"
+            app:visibleOrGone="@{visable}"
         />
     </LinearLayout>
 </layout>

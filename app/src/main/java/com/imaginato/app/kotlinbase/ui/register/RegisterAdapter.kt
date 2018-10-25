@@ -41,6 +41,7 @@ class RegisterAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemViewHolder.itemRegisterBinding.run {
             planName = plans.get(position)
             planImage = R.mipmap.ic_launcher
+            visable = true
             clickListener = object : View.OnClickListener {
                 override fun onClick(v: View?) {
                     this@RegisterAdapter.notifyDataSetChanged()
