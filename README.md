@@ -1,4 +1,4 @@
-Android Common Library
+Imaginato Android Common Library
 =====
 
 minVersion 15
